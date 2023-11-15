@@ -25,10 +25,10 @@ Route::get('/one-to-one', function () {
 
 
     // $users = User::all();
-    // return view('welcome',compact('users'));
+    // return view('one_to_one',compact('users'));
 
     // $phone = Phone::all();
-    // return view('phone',compact('phone'));
+    // return view('one_to_one2',compact('phone'));
 });
 
 
