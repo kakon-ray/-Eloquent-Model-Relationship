@@ -5,6 +5,7 @@ use App\Models\Phone;
 use App\Models\User;
 use App\Models\Post;
 use App\Models\Comment;
+use App\Models\Category;
 
 
 // one to one relationship
@@ -35,7 +36,7 @@ Route::get('/one-to-one', function () {
 
 
 Route::get('/one_to_many', function () {
-//  এখানে Post আইডি ১ এর  comments শো করবে।
+ //  এখানে Post আইডি ১ এর  comments শো করবে।
     $post = Post::find(1);
     $comments = Post::find(1)->comments;
      // এখানে প্রতি Post এর মধ্যে all comments পাবো।
@@ -50,4 +51,15 @@ Route::get('/one_to_many2', function () {
         $comments = Comment::all();
 
      return view('one_to_many2',compact('comments'));
-    });
+});
+
+Route::get('/many_to_many', function () {
+        //  এখানে Post আইডি ১ এর  comments শো করবে।
+            $post = Post::all();
+            $postCategory = Post::with('catagories')->get();
+            $categoryPost = Category::with('posts')->get();
+
+            // return $categoryPost;
+    
+         return view('many_to_many',compact('categoryPost'));
+});
